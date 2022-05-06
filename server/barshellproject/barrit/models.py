@@ -1,7 +1,9 @@
 from django.db import models
 import uuid
 
+
 # Create your models here.
+
 class A_User(models.Model):
     audiodescription = models.BooleanField(default=True)
     darkmode = models.BooleanField(default=False)
@@ -10,4 +12,9 @@ class A_User(models.Model):
 
     def getById(id):
         user = A_User.objects.get(id=id)
+        return user
+
+    def SaveById(id):
+        user = A_User.getById(id)
+        user.save()
         return user

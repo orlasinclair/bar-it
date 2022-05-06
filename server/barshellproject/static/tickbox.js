@@ -6,27 +6,6 @@ audiodescript.addEventListener('submit', toggleAD)
 darkmode.addEventListener('submit', toggleDM)
 
 
-function AD() {
-    if(audiodescript.value === "True"){
-        audiodescript.checked = true
-    }
-    else{
-        audiodescript.checked = false
-    }
-
-}
-
-function DM() {
-    if(darkmode.value === "True"){
-        darkmode.checked = true
-    }
-    else{
-
-        darkmode.checked = false
-    }
-
-}
-
 function toggleAD() {
     if(audiodescript.checked){
         audiodescript.value = "True"
@@ -51,7 +30,3 @@ function toggleDM() {
 
 }
 
-
-
-AD()
-DM()

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="post">
+    {% csrf_token %} 
+</form>
+<h1>Thank you for making a user</h1>
+
+{% endblock %}
