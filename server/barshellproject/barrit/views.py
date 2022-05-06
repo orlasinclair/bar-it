@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from barrit.forms import SetUpForm
 from barrit.models import A_User
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-from django.core import serializers
 from django.core import serializers
 from django.http import HttpResponse
 #from project.utils import get_db_handle, get_collection_handle
@@ -20,7 +18,6 @@ def GetOne(request, id):
     if request.method == 'POST':
         user = A_User.getById(id)
         output = request.POST
-        print("this is the data", output)
         DM_Changed = output.get('darkmode')
         AD_Changed = output.get('audiodescription')
         if DM_Changed != None:
@@ -28,18 +25,12 @@ def GetOne(request, id):
                 user.darkmode = True
             else:
                 user.darkmode = False
-            user.save(update_fields=['darkmode'])
-        else:
-            user.darkmode = user.darkmode
         if AD_Changed != None:
             if output['audiodescription'] == "true":
                 user.audiodescription = True
             else:
                 user.audiodescription = False
-            user.save(update_fields=['audiodescription'])
-        else:
-            user.audiodescription = user.audiodescription
-        user = A_User.getById(id)
+        user.save(update_fields=['audiodescription', 'darkmode'])
         output = serializers.serialize('json', [user])
         return HttpResponse(output, content_type='application/json')
     else:
