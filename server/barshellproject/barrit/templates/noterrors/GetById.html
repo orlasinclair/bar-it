@@ -1,10 +1,20 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
 <h1>here are your preferences</h1>
+<form method="post">
 {% csrf_token %}
-{{ form.as_p }}
+audio description : <input type="checkbox" id="audiodescription" name="audiodescription" value ={{output.audiodescription}}>
+darkmode : <input type="checkbox" id="darkmode" name="darkmode" value ={{output.darkmode}}>
+<button type="submit" action="=post">changeSettings</button>
+</form>
 
 <h2>AD ENABLED : {{output.audiodescription}}</h2>
 <h2>DM ENABLED : {{output.darkmode}}</h2>
+
+
+
+
+
 {% endblock %}

@@ -12,14 +12,18 @@ from barrit.models import A_User
 # Create your views here.
 def GetOne(request, id):
     if request.method == 'POST':
-        print("posted")
+        user = A_User.getById(id)
+        form = SetUpForm(request.POST)
+        output = request.POST
+        if output['darkmode'] not in output:
+            print("dark mode is not in POST")
+        #output = {'output': user}
+        #print("temp", output['audiodescription'])
+        return render(request, 'noterrors/GetById.html', context = output)
     else:
-        form = SetUpForm()
         user = A_User.getById(id)
         output = {'output': user}
-        print("print user", user)
-        print("print input id", id)
-        return render(request, 'noterrors/GetById.html', context = output)
+        return render(request, 'noterrors/GetById.html',context = output)
 
 
 
