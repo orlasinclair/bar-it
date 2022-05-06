@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>here are your preferences</h1>
+{% csrf_token %}
+{{ form.as_p }}
+
+<h2>AD ENABLED : {{output.audiodescription}}</h2>
+<h2>DM ENABLED : {{output.darkmode}}</h2>
+{% endblock %}
