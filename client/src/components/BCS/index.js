@@ -1,10 +1,15 @@
 import Quagga from 'quagga';
 import React, { useState } from "react";
+import { useSpeechSynthesis } from "react-speech-kit";
+
 
 
 function BCS() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
+    const [description, setDescription] = useState("");
+    //const { speak } = useSpeechSynthesis();
+
 
     function startScanner() {
         Quagga.init({
@@ -40,7 +45,7 @@ function BCS() {
 
         }, function (err) {
             if (err) {
-                console.log(err);
+                console.log("this is the error", err);
                 return
             }
 
@@ -84,6 +89,7 @@ function BCS() {
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
+            setDescription("flora light lactose free 500 grams")
         });
     }
 
@@ -99,6 +105,9 @@ function BCS() {
             startScanner()
         }
     }
+
+    //<h2 onChange={() => speak({ text: description })}>whaatttt</h2>
+
 
     return(<>
 
