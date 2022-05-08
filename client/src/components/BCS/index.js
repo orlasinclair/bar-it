@@ -1,6 +1,7 @@
 import Quagga from 'quagga';
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
+import { useEffect } from "react"
 
 
 
@@ -8,7 +9,13 @@ function BCS() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
-    //const { speak } = useSpeechSynthesis();
+    const { speak } = useSpeechSynthesis();
+    const msg = new SpeechSynthesisUtterance()
+    msg.text = description
+
+    useEffect(() => {
+        window.speechSynthesis.speak(msg)
+    }, [description])
 
 
     function startScanner() {
@@ -106,7 +113,10 @@ function BCS() {
         }
     }
 
-    //<h2 onChange={() => speak({ text: description })}>whaatttt</h2>
+    function handleSpeech(description){
+        speak({ text: description })
+    }
+
 
 
     return(<>
@@ -114,6 +124,7 @@ function BCS() {
     <section id="scanner-container"></section>
     <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
     <h1>barcode: {barCode}</h1>
+    <h2 onChange={() => handleSpeech(description)}>{description}</h2>
     
     
     
