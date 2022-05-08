@@ -1,10 +1,13 @@
 import React from 'react';
 //import './styles.css'
-//import {BackButton} from '../../components'
+import {BCS} from '../../components'
 
 
 function Home (){
-    return(<h1>Home page</h1>)
+    return(<>
+    <h1>Home page</h1>
+    <BCS />
+    </>)
 
 }
 

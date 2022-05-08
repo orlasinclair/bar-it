@@ -3,6 +3,7 @@ import { useNavigate as Navigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 
+
 function NavBar() {
     const goTo = Navigate();
 
