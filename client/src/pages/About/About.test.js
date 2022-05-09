@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { About } from './index';
+import { default as About } from './index';
 
 describe('About', () => {
     beforeEach(() => render(<About />))

@@ -3,9 +3,12 @@ import React from 'react';
 import {BCS} from '../../components'
 
 
+
 function Home (){
+
+    //<BCS />
     return(<>
-    <h1>Home page</h1>
+    <h1 role="heading">Home page</h1>
     <BCS />
     </>)
 

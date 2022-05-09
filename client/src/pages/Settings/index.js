@@ -4,7 +4,7 @@ import React from 'react';
 
 
 function Settings (){
-    return(<h1>settings page</h1>)
+    return(<h1 role="heading">settings page</h1>)
 
 }
 
