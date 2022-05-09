@@ -19,7 +19,27 @@ class TestBasicViews(BaseTestCase):
 
     def test_get(self):
         response = json.loads(self.c.get('/barrit/5bdcd93b-2075-4dfa-9a25-54ec1ee81c81').content)
-        print("print statement in test", response)
-        for object in response:
-            assert "darkmode" in object
+        assert "darkmode" in response[0]['fields']
+        assert "audiodescription" in response[0]['fields']
+        assert response[0]['fields']['audiodescription'] == True
+        assert response[0]['fields']['darkmode'] == False
+        assert response[0]['pk'] == '5bdcd93b-2075-4dfa-9a25-54ec1ee81c81'
+
+    def test_update_user(self):
+        response = json.loads(self.c.post('/barrit/5bdcd93b-2075-4dfa-9a25-54ec1ee81c81', {
+            'darkmode': 'true',
+            'audiodescription': 'false'
+        }).content)
+        assert "darkmode" in response[0]['fields']
+        assert "audiodescription" in response[0]['fields']
+        assert response[0]['fields']['audiodescription'] == False
+        assert response[0]['fields']['darkmode'] == True
+        assert response[0]['pk'] == '5bdcd93b-2075-4dfa-9a25-54ec1ee81c81'
+
+
+    def test_create_user(self):
+        response = self.c.post('/barrit/create')
+        assert "noterrors/thankyou.html" in [t.name for t in response.templates]
+
+
 
