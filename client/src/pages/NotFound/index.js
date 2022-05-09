@@ -4,7 +4,7 @@ import React from 'react';
 
 
 function NotFound (){
-    return(<h1>NotFound page</h1>)
+    return(<h1 role="heading">NotFound page</h1>)
 
 }
 

@@ -4,9 +4,14 @@ import {BCS} from '../../components'
 import {Login} from '../../components'
 
 
+
 function Home (){
+
+    //<BCS />
     return(<>
-    <h1>Home page</h1>
+
+
+    <h1 role="heading">Home page</h1>
     <Login/>
     <BCS />
 

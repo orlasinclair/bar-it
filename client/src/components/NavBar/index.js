@@ -12,10 +12,10 @@ function NavBar() {
     }
 
     return (<>
-        <NavLink to="" activeClassName="selected" className='link'><h1>Home</h1></NavLink>
-        <NavLink to="settings" activeClassName="selected" className='link'><h1>settings</h1></NavLink>
-        <NavLink to="about" activeClassName="selected" className='link'><h1>about</h1></NavLink>
-        <button className='BackBtn' onClick={goBack}>Back</button>
+        <NavLink role="home-button" to="" activeClassName="selected" className='link'><h1>Home</h1></NavLink>
+        <NavLink role="settings-button" to="settings" activeClassName="selected" className='link'><h1>settings</h1></NavLink>
+        <NavLink role="about-button" to="about" activeClassName="selected" className='link'><h1>about</h1></NavLink>
+        <button role="back-button" className='BackBtn' onClick={goBack}>Back</button>
     </>)
 
 }
