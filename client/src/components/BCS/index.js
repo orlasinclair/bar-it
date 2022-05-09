@@ -16,6 +16,7 @@ function BCS() {
 
     useEffect(() => {
         window.speechSynthesis.speak(msg)
+        setDescription("")
     }, [description])
 
     async function getInfo(){
@@ -129,7 +130,7 @@ function BCS() {
             }
             else{
                 counter++
-                if(counter % 1000 === 0){
+                if(counter % 500 === 0){
                     setDescription("no barcode has been detected")
                 }
 
