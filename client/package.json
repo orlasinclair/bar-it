@@ -1,7 +1,6 @@
 {
   "name": "client",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "webpack serve --mode development --config config/webpack.config.dev.js",
@@ -41,5 +40,7 @@
     "react-speech-kit": "^3.0.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
-  }
+  },
+  "description": "",
+  "proxy": "https://api.barcodelookup.com:5000"
 }

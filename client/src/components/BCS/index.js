@@ -2,6 +2,8 @@ import Quagga from 'quagga';
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
+import axios from "axios"
+
 
 
 
@@ -17,6 +19,27 @@ function BCS() {
         window.speechSynthesis.speak(msg)
     }, [description])
 
+    async function getInfo(){
+        const proxyurl = "https://cors-anywhere.herokuapp.com/"
+        const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=1rpdqrw4o3u4meisknmxfu8q0dorwz`)
+        console.log("response.data in getInfo", response.data.products[0].title)
+        console.log("response.data in getInfo", response.data.products[0].brand)
+        // console.log("response.data in getInfo", response.data.products[0].category)
+        // console.log("response.data in getInfo", response.data.products[0].stores)
+        const productinfo = await response.data.products
+        setDescription(response.data.products[0].title)
+        setDescription(response.data.products[0].brand)
+        // setDescription(response.data.products[0].category)
+        // setDescription(response.data.products[0].stores)
+        return response
+    }
+
+    useEffect(() => {
+        let response = getInfo()
+        console.log("here is useEffect Hook")
+        console.log("response types", response)
+    }, [barCode])
+                
 
     function startScanner() {
         Quagga.init({
@@ -66,17 +89,17 @@ function BCS() {
             drawingCanvas = Quagga.canvas.dom.overlay;
             if (result) {
                 if (result.boxes) {
-                    // drawingCtx.clearRect(0, 0,
-                    //     parseInt(drawingCanvas.getAttribute("width")), 
-                    //     parseInt(drawingCanvas.getAttribute("height")));
-                    // result.boxes.filter(function (box) {
-                    //     return box !== result.box;
-                    // }).forEach(function (box) {
-                    //     Quagga.ImageDebug.drawPath(box, 
-                    //         { x: 0, y: 1 }, 
-                    //         drawingCtx, 
-                    //         { color: "green", lineWidth: 2 });
-                    // });
+                    drawingCtx.clearRect(0, 0,
+                        parseInt(drawingCanvas.getAttribute("width")), 
+                        parseInt(drawingCanvas.getAttribute("height")));
+                    result.boxes.filter(function (box) {
+                        return box !== result.box;
+                    }).forEach(function (box) {
+                        Quagga.ImageDebug.drawPath(box, 
+                            { x: 0, y: 1 }, 
+                            drawingCtx, 
+                            { color: "green", lineWidth: 2 });
+                    });
                 }
 
                 if (result.box) {
@@ -96,7 +119,8 @@ function BCS() {
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
-            setDescription("flora light lactose free 500 grams")
+            Quagga.stop();
+
         });
     }
 
@@ -130,6 +154,7 @@ function BCS() {
     
     
     </>)
+
 
 }
 
