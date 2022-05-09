@@ -21,7 +21,7 @@ function BCS() {
 
     async function getInfo(){
         const proxyurl = "https://cors-anywhere.herokuapp.com/"
-        const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=1rpdqrw4o3u4meisknmxfu8q0dorwz`)
+        const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=YOUR_API_KEY`)
         console.log("response.data in getInfo", response.data.products[0].title)
         console.log("response.data in getInfo", response.data.products[0].brand)
         // console.log("response.data in getInfo", response.data.products[0].category)
