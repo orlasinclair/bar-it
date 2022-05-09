@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from barrit.models import A_User
 from django.views.decorators.csrf import csrf_exempt
+from .forms import UserSignupForm
 
 
 
@@ -54,4 +55,14 @@ def CreateNewUser(request):
         return render(request, 'noterrors/thankyou.html')
 
 
+def signup(request):
+    form = UserSignupForm(request.POST)
+    if form.is_valid:
+        pass
+    else:
+        form = UserSignupForm()
 
+    context = {
+        "form": form
+    }
+    return render(request, "signup.html", context)
