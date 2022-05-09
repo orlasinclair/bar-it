@@ -4,7 +4,7 @@ import React from 'react';
 
 
 function About (){
-    return(<h1>about page</h1>)
+    return(<h1 role="heading">about page</h1>)
 
 }
 
