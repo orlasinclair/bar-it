@@ -5,5 +5,6 @@ from . import views
 
 urlpatterns = [
     path('create', views.CreateNewUser, name='create-one'),
-    path('<uuid>', views.GetOne, name='get-one'), 
+    path('<id>', views.GetOne, name='get-one'), 
+    path('signup', views.signup, name="signup" )
 ]
