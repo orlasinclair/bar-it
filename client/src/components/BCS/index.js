@@ -2,8 +2,7 @@ import Quagga from 'quagga';
 import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
-import axios from "axios"
-
+import axios from 'axios';
 
 
 
@@ -17,9 +16,41 @@ function BCS() {
 
     useEffect(() => {
         window.speechSynthesis.speak(msg)
+        setDescription("")
     }, [description])
 
     async function getInfo(){
+
+        try{
+            const proxyurl = "https://cors-anywhere.herokuapp.com/"
+            const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
+            setDescription(response.data.products[0].description)
+            return response
+
+        }
+        catch (err){
+            setDescription("Sorry, i dont have that in my database, please try again")
+            setBarCode("")
+            startScanner()
+            document.querySelector('#scanner-container').style.display = "block";
+            return err
+        }
+
+    }
+
+    useEffect(() => {
+        startScanner()
+    }, [])
+
+
+    useEffect(() => {
+        if(barCode){
+            getInfo()
+            setBarCode("")
+        }
+    }, [scannerRunning])
+
+
         const proxyurl = "https://cors-anywhere.herokuapp.com/"
         const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=YOUR_API_KEY`)
         console.log("response.data in getInfo", response.data.products[0].title)
@@ -42,6 +73,7 @@ function BCS() {
                 
 
     function startScanner() {
+        let counter = 0
         Quagga.init({
             inputStream: {
                 name: "Live",
@@ -82,12 +114,14 @@ function BCS() {
             console.log("Process starting");
             Quagga.start();
             setScannerRunning(true)
+            document.querySelector('canvas').style.display = "inline";
         });
 
         Quagga.onProcessed(function (result) {
-            var drawingCtx = Quagga.canvas.ctx.overlay,
+            let drawingCtx = Quagga.canvas.ctx.overlay,
             drawingCanvas = Quagga.canvas.dom.overlay;
             if (result) {
+                setDescription("barcode detected")
                 if (result.boxes) {
                     drawingCtx.clearRect(0, 0,
                         parseInt(drawingCanvas.getAttribute("width")), 
@@ -116,9 +150,22 @@ function BCS() {
                         { color: 'red', lineWidth: 3 });
                 }
             }
+            else{
+                counter++
+                if(counter % 500 === 0){
+                    setDescription("no barcode has been detected")
+                }
+
+            }
+
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
+            setDescription("barcode scanned")
+            document.querySelector('#scanner-container').style.display = "none";
+            document.querySelector('canvas').style.display = "none";
+            setScannerRunning(false)
+
             Quagga.stop();
 
         });
@@ -129,7 +176,6 @@ function BCS() {
             document.querySelector('#scanner-container').style.display = "none";
             setScannerRunning(false)
             Quagga.stop();
-
         }
         else{
             document.querySelector('#scanner-container').style.display = "block";
@@ -137,9 +183,6 @@ function BCS() {
         }
     }
 
-    function handleSpeech(description){
-        speak({ text: description })
-    }
 
 
 
@@ -148,7 +191,6 @@ function BCS() {
     <section id="scanner-container"></section>
     <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
     <h1>barcode: {barCode}</h1>
-    <h2 onChange={() => handleSpeech(description)}>{description}</h2>
     
     
     
