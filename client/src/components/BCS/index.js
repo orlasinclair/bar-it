@@ -24,13 +24,13 @@ function BCS() {
         const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=1rpdqrw4o3u4meisknmxfu8q0dorwz`)
         console.log("response.data in getInfo", response.data.products[0].title)
         console.log("response.data in getInfo", response.data.products[0].brand)
-        // console.log("response.data in getInfo", response.data.products[0].category)
-        // console.log("response.data in getInfo", response.data.products[0].stores)
+        console.log("response.data in getInfo", response.data.products[0].category)
+        console.log("response.data in getInfo", response.data.products[0].stores)
         const productinfo = await response.data.products
         setDescription(response.data.products[0].title)
         setDescription(response.data.products[0].brand)
-        // setDescription(response.data.products[0].category)
-        // setDescription(response.data.products[0].stores)
+        setDescription(response.data.products[0].category)
+        setDescription(response.data.products[0].stores)
         return response
     }
 
