@@ -4,11 +4,11 @@ import Quagga from 'quagga';
 //import {BackButton} from '../../components'
 
 
-function NotFound (){
+function PreviousSearch (){
     Quagga.stop()
-    return(<h1 role="heading">NotFound page</h1>)
+    return(<h1 role="heading">previous search page</h1>)
 
 }
 
 
-export default NotFound;
+export default PreviousSearch;
