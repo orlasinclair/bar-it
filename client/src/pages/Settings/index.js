@@ -1,11 +1,14 @@
+
 import React, { useState, useEffect } from 'react';
 import { getUserSettings, updateUserSettings } from '../../actions';
 import './style.css'
-//import {BackButton} from '../../components'
+import Quagga from 'quagga';
+
+
 
 
 function Settings (){
-
+    Quagga.stop()
     const [audiodescription, setAudiodescription] = useState()
     const [darkmode, setDarkmode] = useState()
 
@@ -66,6 +69,7 @@ function Settings (){
             </section>
         </section>
     )
+
 
 }
 
