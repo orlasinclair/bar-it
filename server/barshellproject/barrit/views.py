@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from barrit.models import A_User
 from django.views.decorators.csrf import csrf_exempt
+from .forms import UserSignupForm
 
 
 
@@ -22,9 +23,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 @csrf_exempt
-def GetOne(request, id):
+def GetOne(request, uuid):
     if request.method == 'POST':
-        user = A_User.getById(id)
+        user = A_User.getById(uuid)
         output = request.POST
         DM_Changed = output.get('darkmode')
         AD_Changed = output.get('audiodescription')
@@ -42,7 +43,7 @@ def GetOne(request, id):
         output = serializers.serialize('json', [user])
         return HttpResponse(output, content_type='application/json')
     else:
-        user = A_User.getById(id)
+        user = A_User.getById(uuid)
         output = serializers.serialize('json', [user])
         return HttpResponse(output, content_type='application/json')
 
@@ -54,4 +55,14 @@ def CreateNewUser(request):
         return render(request, 'noterrors/thankyou.html')
 
 
+def signup(request):
+    form = UserSignupForm(request.POST)
+    if form.is_valid:
+        pass
+    else:
+        form = UserSignupForm()
 
+    context = {
+        "form": form
+    }
+    return render(request, "signup.html", context)
