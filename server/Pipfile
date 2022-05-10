@@ -7,7 +7,7 @@ name = "pypi"
 pytest = "*"
 pytest-cov = "*"
 werkzeug = "*"
-django = "*"
+django = "==3.1"
 pymongo = "*"
 dnspython = "*"
 gunicorn = "*"
@@ -16,6 +16,10 @@ whitenoise = "*"
 django-cors-headers = "*"
 psycopg2-binary = "*"
 virtualenv = "*"
+djangorestframework = "*"
+django-rest-auth = "*"
+django-allauth = "*"
+
 
 [dev-packages]
 
