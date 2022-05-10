@@ -1,6 +1,13 @@
 {
   "dependencies": {
+    "@react-google-maps/api": "^2.10.2",
+    "antd": "^4.20.3",
     "axios": "^0.27.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "google-map-react": "^2.1.10",
+    "use-places-autocomplete": "^3.0.0"
+  },
+  "devDependencies": {
+    "@ant-design/icons": "^4.7.0"
   }
 }
