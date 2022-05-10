@@ -16,20 +16,30 @@ function BCS() {
 
     useEffect(() => {
         window.speechSynthesis.speak(msg)
-        setDescription("")
     }, [description])
 
     async function getInfo(){
+
         try{
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
             const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
             setDescription(response.data.products[0].description)
+            console.log("response.data in getInfo", response.data.products[0].title)
+            console.log("response.data in getInfo", response.data.products[0].brand)
+            // console.log("response.data in getInfo", response.data.products[0].category)
+            // console.log("response.data in getInfo", response.data.products[0].stores)
+            const productinfo = await response.data.products
+            setDescription(response.data.products[0].title)
+            setDescription(response.data.products[0].brand)
+            // setDescription(response.data.products[0].category)
+            // setDescription(response.data.products[0].stores)
             return response
 
         }
         catch (err){
             setDescription("Sorry, i dont have that in my database, please try again")
             setBarCode("")
+            setDescription("")
             startScanner()
             document.querySelector('#scanner-container').style.display = "block";
             return err
@@ -133,7 +143,6 @@ function BCS() {
                 if(counter % 500 === 0){
                     setDescription("no barcode has been detected")
                 }
-
             }
 
         });
@@ -143,6 +152,7 @@ function BCS() {
             document.querySelector('#scanner-container').style.display = "none";
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
+
             Quagga.stop();
 
         });
@@ -173,6 +183,7 @@ function BCS() {
     
     
     </>)
+
 
 }
 
