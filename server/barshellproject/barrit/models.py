@@ -14,6 +14,6 @@ class A_User(models.Model):
 
 
 
-    def getById(id):
-        user = A_User.objects.get(id=id)
+    def getById(uuid):
+        user = A_User.objects.get(uuid=uuid)
         return user
