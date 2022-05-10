@@ -20,6 +20,7 @@ function BCS() {
     }, [description])
 
     async function getInfo(){
+
         try{
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
             const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
@@ -49,6 +50,27 @@ function BCS() {
         }
     }, [scannerRunning])
 
+
+        const proxyurl = "https://cors-anywhere.herokuapp.com/"
+        const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=YOUR_API_KEY`)
+        console.log("response.data in getInfo", response.data.products[0].title)
+        console.log("response.data in getInfo", response.data.products[0].brand)
+        // console.log("response.data in getInfo", response.data.products[0].category)
+        // console.log("response.data in getInfo", response.data.products[0].stores)
+        const productinfo = await response.data.products
+        setDescription(response.data.products[0].title)
+        setDescription(response.data.products[0].brand)
+        // setDescription(response.data.products[0].category)
+        // setDescription(response.data.products[0].stores)
+        return response
+    }
+
+    useEffect(() => {
+        let response = getInfo()
+        console.log("here is useEffect Hook")
+        console.log("response types", response)
+    }, [barCode])
+                
 
     function startScanner() {
         let counter = 0
@@ -143,6 +165,7 @@ function BCS() {
             document.querySelector('#scanner-container').style.display = "none";
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
+
             Quagga.stop();
 
         });
@@ -173,6 +196,7 @@ function BCS() {
     
     
     </>)
+
 
 }
 
