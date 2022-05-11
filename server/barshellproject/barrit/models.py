@@ -10,9 +10,9 @@ class A_User(AbstractUser):
     audiodescription = models.BooleanField(default=True)
     darkmode = models.BooleanField(default=False)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    name = models.CharField(max_length= 50, default="")
-    email = models.CharField(max_length= 50, default='')
-    password = models.CharField(max_length=50, default="")
+    name = models.CharField(max_length= 100, default="")
+    email = models.CharField(max_length= 100, default='')
+    password = models.CharField(max_length=100, default="")
     username = models.CharField(max_length=140, default="", unique=True)
 
     def __str__(self):
