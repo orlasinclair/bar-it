@@ -70,7 +70,11 @@ function BCS() {
                 constraints: {
                     width: 480,
                     height: 320,
-                    facingMode: "environment"
+                    facingMode: "environment",
+                    aspectRatio:{
+                        min: 2,
+                        max: 2
+                    }
                 },
             },
             decoder: {
