@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import './style.css'
 import Quagga from 'quagga';
+import {InputGroup} from 'reactstrap'
 import '../../App.css';
 import { ThemeContext, themes } from '../../components/Darkmode/themeContext';
 
@@ -23,7 +24,7 @@ function Settings (){
       let audioSettings = ''
       let modeSettings = ''
 
-      if(audiodescription === true){
+      if(audiodescription === true ){
           audioSettings = true
       } else {
           audioSettings = false

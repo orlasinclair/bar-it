@@ -24,7 +24,7 @@ export default function Login() {
       password: password
     };
 
-    fetch('http://127.0.0.1:8000/api/v1/barrit/auth/login/', {
+    fetch('https://barr-it.herokuapp.com/api/v1/barrit/auth/login/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
