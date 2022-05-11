@@ -60,7 +60,7 @@ function Settings (){
             <section className="toggle">
                 <span className='label'>Darkmode:</span>
                 <label className="toggle-switch">
-                    <input id='audioToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
+                    <input id='modeToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
                     <span className="switch" />
                 </label>
             </section>
