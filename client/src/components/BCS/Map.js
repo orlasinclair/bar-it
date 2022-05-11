@@ -23,7 +23,7 @@ export default function AppMM(props) {
         lng: props.long
       };
   const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "AIzaSyBPWJFCNh_YJ0tD6V-UY5R7YIOaF-T39Xg",
+    googleMapsApiKey: "YOUR API KEY",
     libraries
   });
   const mapRef = React.useRef();
