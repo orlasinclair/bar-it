@@ -71,7 +71,7 @@ function BCS() {
                     width: 480,
                     height: 320,
                     facingMode: "environment",
-                    cameraId: 8
+                    cameraId: 1
                 },
             },
             decoder: {
