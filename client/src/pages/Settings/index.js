@@ -24,7 +24,7 @@ function Settings (){
       let audioSettings = ''
       let modeSettings = ''
 
-      if(audiodescription === true){
+      if(audiodescription === true ){
           audioSettings = true
       } else {
           audioSettings = false
