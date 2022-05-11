@@ -71,8 +71,9 @@ function BCS() {
                     width: 1800,
                     height: 320,
                     facingMode: "environment",
-                    cameraId: 1
-                    focusMode: 'continuous'
+                    cameraId: 1,
+                    focusMode: 'continuous',
+
                 },
             },
             decoder: {
