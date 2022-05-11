@@ -69,12 +69,8 @@ function BCS() {
                 target: document.querySelector('#scanner-container'),
                 constraints: {
                     width: 480,
-                    height: 320,
+                    height: 640,
                     facingMode: "environment",
-                    aspectRatio:{
-                        min: 2,
-                        max: 2
-                    }
                 },
             },
             decoder: {
