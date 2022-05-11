@@ -8,7 +8,7 @@ export default function Dashboard() {
       if (localStorage.getItem('token') === null) {
         window.location.replace('http://localhost:8081/login');
       } else {
-        fetch('http://127.0.0.1:8000/api/v1/barrit/auth/user/', {
+        fetch('https://barr-it.herokuapp.com/api/v1/barrit/auth/user/', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

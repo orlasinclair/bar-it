@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import './style.css'
 import Quagga from 'quagga';
+import './style.css'
 import {InputGroup} from 'reactstrap'
 import '../../App.css';
 import { ThemeContext, themes } from '../../components/Darkmode/themeContext';

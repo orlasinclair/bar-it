@@ -10,7 +10,7 @@ export default function Login() {
 
    useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:8081/dashboard');
+      window.location.replace('http://localhost:8081/');
     } else {
       setLoading(false);
     }
@@ -36,7 +36,7 @@ export default function Login() {
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:8081/dashboard');
+          window.location.replace('http://localhost:8081/');
         } else {
           setEmail('');
           setPassword('');
