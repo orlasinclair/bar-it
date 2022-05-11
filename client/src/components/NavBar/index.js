@@ -24,7 +24,6 @@ function NavBar() {
         { isAuth === true ? ( 
             <Fragment>
 
-                <NavLink role="dashboard" to='/dashboard'>Dashboard</NavLink>
                 <NavLink to='/logout'>Logout</NavLink>
                 <NavLink role="settings-button" to="settings"  className='link' ><h1>settings</h1></NavLink>
                 <NavLink role="previoussearch-button" to="previous"  className='link' ><h1>previous</h1></NavLink>
@@ -35,7 +34,6 @@ function NavBar() {
             </Fragment>
             ): (
                 <Fragment>
-                    <NavLink role="settings-button" to="settings"  className='link' ><h1>settings</h1></NavLink>
                     <NavLink role="login-button" to="login"  className='link' ><h1>login</h1></NavLink>
                     <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink>
                 </Fragment>
