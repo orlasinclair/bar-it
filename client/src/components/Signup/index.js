@@ -26,7 +26,7 @@ export default function Signup() {
       username: username
     };
 
-    fetch('http://127.0.0.1:8000/api/v1/barrit/auth/register/', {
+    fetch('https://barr-it.herokuapp.com/api/v1/barrit/auth/register/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

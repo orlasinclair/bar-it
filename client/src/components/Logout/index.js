@@ -14,7 +14,7 @@ export default function Logout() {
     const handleLogout = e => {
       e.preventDefault();
   
-      fetch('http://127.0.0.1:8000/api/v1/barrit/auth/logout/', {
+      fetch('https://barr-it.herokuapp.com/api/v1/barrit/auth/logout/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
