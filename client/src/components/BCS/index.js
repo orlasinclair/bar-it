@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
+import PlacesWithStandaloneSearchBox from '../Map/index'
 
 
 
@@ -177,7 +178,9 @@ function BCS() {
 
     <section id="scanner-container"></section>
     <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
-    <h1>barcode: {barCode}</h1>
+    <h1>barcode: {barCode}, {description}</h1>
+    <h1 id = "description">{description}</h1>
+    <PlacesWithStandaloneSearchBox search={description}/>
     
     
     

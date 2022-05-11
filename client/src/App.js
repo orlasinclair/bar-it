@@ -3,8 +3,9 @@ import { Routes, Route } from 'react-router-dom';
 import AppMap from './AppMap';
 import { NavBar } from "./components/index";
 import { About, Home, Settings, NotFound, PreviousSearch, SignUp, LoginPage } from './pages/index';
-import MapContainer from "./components/BCS/MapContainer"
-const google = window.google;
+import PlacesWithStandaloneSearchBox from './components/Map/index'
+//import MapContainer from "./components/BCS/MapContainer"
+//const google = window.google;
 
 
 
@@ -20,7 +21,7 @@ function App() {
             <Route path="signup" element={<SignUp />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="*" element = {<NotFound />} />
-            <Route path="appMap" element = {<MapContainer />} />
+            <Route path="appMap" element = {<PlacesWithStandaloneSearchBox />} />
         </Routes>
     </>)
 
