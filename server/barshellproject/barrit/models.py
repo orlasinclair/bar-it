@@ -9,7 +9,7 @@ import uuid
 class A_User(AbstractUser):
     audiodescription = models.BooleanField(default=True)
     darkmode = models.BooleanField(default=False)
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, max_length= 100)
     name = models.CharField(max_length= 100, default="")
     email = models.CharField(max_length= 100, default='')
     password = models.CharField(max_length=100, default="")
