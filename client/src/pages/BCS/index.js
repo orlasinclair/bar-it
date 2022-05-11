@@ -23,14 +23,20 @@ function BCS() {
         try{
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
             const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
-            setDescription(response.data.products[0].description)
+            if (localStorage.getItem('audiodescription') === 'true') {
+                setDescription(response.data.products[0].description);
+            }
+            else{setDescription('')}
             console.log("response.data in getInfo", response.data.products[0].title)
             console.log("response.data in getInfo", response.data.products[0].brand)
             // console.log("response.data in getInfo", response.data.products[0].category)
             // console.log("response.data in getInfo", response.data.products[0].stores)
             const productinfo = await response.data.products
-            setDescription(response.data.products[0].title)
-            setDescription(response.data.products[0].brand)
+            if (localStorage.getItem('audiodescription') === 'true') {
+                setDescription(response.data.products[0].title)
+                setDescription(response.data.products[0].brand)
+            }
+            else{setDescription('')}
             // setDescription(response.data.products[0].category)
             // setDescription(response.data.products[0].stores)
             return response
@@ -70,7 +76,7 @@ function BCS() {
                 constraints: {
                     width: 480,
                     height: 320,
-                    facingMode: "environment",
+                    facingMode: "environment"
                 },
             },
             decoder: {
@@ -109,7 +115,11 @@ function BCS() {
             let drawingCtx = Quagga.canvas.ctx.overlay,
             drawingCanvas = Quagga.canvas.dom.overlay;
             if (result) {
-                setDescription("barcode detected")
+                if (localStorage.getItem('audiodescription') === 'true') {
+                    setDescription("barcode detected");
+                }
+                else{setDescription('')}
+                // setDescription("barcode detected")
                 if (result.boxes) {
                     drawingCtx.clearRect(0, 0,
                         parseInt(drawingCanvas.getAttribute("width")), 
@@ -141,14 +151,23 @@ function BCS() {
             else{
                 counter++
                 if(counter % 500 === 0){
-                    setDescription("no barcode has been detected")
+                        if (localStorage.getItem('audiodescription') === 'true') {
+                            setDescription("no barcode has been detected");
+                        }
+                        else{setDescription('')}
+                      }
+                    // setDescription("no barcode has been detected")
                 }
-            }
+            
 
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
-            setDescription("barcode scanned")
+            if (localStorage.getItem('audiodescription') === 'true') {
+                setDescription("barcode scanned");
+            }
+            else{setDescription('')}
+            // setDescription("barcode scanned")
             document.querySelector('#scanner-container').style.display = "none";
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
