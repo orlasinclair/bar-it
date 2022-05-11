@@ -26,6 +26,11 @@ function NavBar() {
 
                 <NavLink role="dashboard" to='/dashboard'>Dashboard</NavLink>
                 <NavLink to='/logout'>Logout</NavLink>
+                <NavLink role="settings-button" to="settings"  className='link' ><h1>settings</h1></NavLink>
+                <NavLink role="previoussearch-button" to="previous"  className='link' ><h1>previous</h1></NavLink>
+                <button role="back-button" className='BackBtn' onClick={goBack}>Back</button>
+                <NavLink role="about-button" to="about"  className='link' ><h1>about</h1></NavLink>
+                <NavLink role="home-button" to="" className='link' activeClassName="active"><h1>Home</h1></NavLink>
 
             </Fragment>
             ): (
@@ -34,13 +39,8 @@ function NavBar() {
                     <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink>
                 </Fragment>
             )}
-        <NavLink role="home-button" to="" className='link' activeClassName="active"><h1>Home</h1></NavLink>
-        <NavLink role="settings-button" to="settings"  className='link' ><h1>settings</h1></NavLink>
-        <NavLink role="previoussearch-button" to="previous"  className='link' ><h1>previous</h1></NavLink>
-        <NavLink role="about-button" to="about"  className='link' ><h1>about</h1></NavLink>
-        <NavLink role="login-button" to="login"  className='link' ><h1>login</h1></NavLink>
-        <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink>
-        <button role="back-button" className='BackBtn' onClick={goBack}>Back</button>
+        {/* <NavLink role="login-button" to="login"  className='link' ><h1>login</h1></NavLink>
+        <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink> */}
     </>)
 
 }
