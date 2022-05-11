@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { getUserSettings, updateUserSettings } from '../../actions';
 import './style.css'
 import Quagga from 'quagga';
 
@@ -9,61 +8,59 @@ import Quagga from 'quagga';
 
 function Settings (){
     Quagga.stop()
-    const [audiodescription, setAudiodescription] = useState()
-    const [darkmode, setDarkmode] = useState()
+    const [audiodescription, setAudiodescription] = useState(true)
+    const [darkmode, setDarkmode] = useState(false)
 
     useEffect(() => {
-        async function getData () {
-            const data = await getUserSettings();
-            setAudiodescription(data.audiodescription)
-            setDarkmode(data.darkmode)
-        }
-        getData()
-    }, [])
+        localStorage.setItem('darkmode', JSON.stringify(darkmode));
+      }, [darkmode]);
+
+      useEffect(() => {
+        localStorage.setItem('audiodescription', JSON.stringify(audiodescription));
+      }, [audiodescription]);
+
+      let audioSettings = ''
+      let modeSettings = ''
+
+      if(audiodescription === true){
+          audioSettings = true
+      } else {
+          audioSettings = false
+      }
+
+      if(darkmode === true){
+          modeSettings = true
+      } else {
+          modeSettings = false
+      }
+
+      const toggleAudio = () => {
+          
+        setAudiodescription(!audioSettings)
+      }
+
+      const toggleMode = () => {
+          
+        setDarkmode(!modeSettings)
+      }
 
 
 
-    const postAudio = async () => {
-        const data = new URLSearchParams()
-        data.append('audiodescription', !audiodescription)
-        updateUserSettings(data)
-        const updatedData = await updateUserSettings(data)
-        setAudiodescription(updatedData[0].fields.audiodescription)
-    }
-
-    const postMode = async () => {
-        const data = new URLSearchParams()
-        data.append('darkmode', !darkmode)
-        updateUserSettings(data)
-        const updatedData = await updateUserSettings(data)
-        setDarkmode(updatedData[0].fields.darkmode)
-    }
-
-    let audioSetting = ''
-    let darkmodeSetting = ''
-
-    if(audiodescription == true){
-        audioSetting = true
-    }else{ audioSetting=false}
-
-    if(darkmode == true){
-        darkmodeSetting = true
-    }else{ darkmodeSetting=false}
-
+    
     return(
         <section>
             <h1 role="heading">Settings page</h1>
-            <section class="toggle">
-                <span class='label'>Audio Description:</span>
+            <section className="toggle">
+                <span className='label'>Audio Description:</span>
                 <label className="toggle-switch">
-                    <input id='audioToggle' type="checkbox" checked={audioSetting} onChange={() => postAudio()} />
+                    <input id='audioToggle' type="checkbox" checked={audioSettings} onChange={() => toggleAudio()} />
                     <span className="switch" />
                 </label>
             </section>
-            <section class="toggle">
-                <span class='label'>Darkmode:</span>
+            <section className="toggle">
+                <span className='label'>Darkmode:</span>
                 <label className="toggle-switch">
-                    <input id='audioToggle' type="checkbox" checked={darkmodeSetting} onChange={() => postMode()} />
+                    <input id='audioToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
                     <span className="switch" />
                 </label>
             </section>
