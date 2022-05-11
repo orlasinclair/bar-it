@@ -68,7 +68,7 @@ function BCS() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 1920,
+                    width: 640,
                     height: 480,
                     facingMode: "environment",
                 },
