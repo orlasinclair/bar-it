@@ -2,6 +2,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "cors": "^2.8.5",
-    "reactstrap": "^9.0.2"
+    "reactstrap": "^9.0.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.1.2"
   }
 }
