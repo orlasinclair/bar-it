@@ -196,7 +196,7 @@
 //         <section className="col-8 h-lg">
 //           <GoogleMapReact
 //             bootstrapURLKeys={{
-//               key: 'AIzaSyBPWJFCNh_YJ0tD6V-UY5R7YIOaF-T39Xg',
+//               key: 'Google key',
 //               libraries: ['places', 'directions']
 //             }}
 //             defaultZoom={11}

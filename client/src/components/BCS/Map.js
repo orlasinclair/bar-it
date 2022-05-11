@@ -17,6 +17,7 @@
 // };
 
 
+<<<<<<< HEAD
 // export default function AppMM(props) {
 //     const center = {
 //         lat: props.lat,
@@ -30,6 +31,21 @@
 //   const onMapLoad = React.useCallback(map => {
 //     mapRef.current = map;
 //   }, []);
+=======
+export default function AppMM(props) {
+    const center = {
+        lat: props.lat,
+        lng: props.long
+      };
+  const { isLoaded, loadError } = useLoadScript({
+    googleMapsApiKey: "YOUR API KEY",
+    libraries
+  });
+  const mapRef = React.useRef();
+  const onMapLoad = React.useCallback(map => {
+    mapRef.current = map;
+  }, []);
+>>>>>>> 0eb601c44dbde3ecd8b3f7e51fe9012f3cea74bf
 
 //   const panTo = React.useCallback(({ lat, lng }) => {
 //     mapRef.current.panTo({ lat, lng });
