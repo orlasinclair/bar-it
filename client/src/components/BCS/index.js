@@ -71,7 +71,8 @@ function BCS() {
                     width: 640,
                     height: 480,
                     facingMode: "environment",
-                    focusMode: 'continuous'
+                    focusMode: 'continuous',
+                    deviceId: 9
                 },
             },
             decoder: {
