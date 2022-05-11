@@ -2,7 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import './style.css'
 import Quagga from 'quagga';
-
+import '../../App.css';
+import { Button, Container, InputGroup } from 'reactstrap';
+import { ThemeContext, themes } from '../../components/Darkmode/themeContext';
 
 
 
@@ -58,11 +60,25 @@ function Settings (){
                 </label>
             </section>
             <section className="toggle">
-                <span className='label'>Darkmode:</span>
+                <span className='label text-warning'>Darkmode:</span>
+                <InputGroup>
+                <ThemeContext.Consumer>
+                {({ changeTheme }) => (
                 <label className="toggle-switch">
-                    <input id='modeToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
+                    <input
+                    color="link"
+                    onClick={() => {
+                        setDarkmode(darkmode);
+                        changeTheme(!darkmode ? themes.light : themes.dark);
+                      }}
+                    id='modeToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
                     <span className="switch" />
+                    <i className={darkmode ? 'fas fa-sun' : 'fas fa-moon'}></i>
+                    <span className="d-lg-none d-md-block">Switch mode</span>
                 </label>
+                )}
+                </ThemeContext.Consumer>
+                </InputGroup>
             </section>
         </section>
     )
