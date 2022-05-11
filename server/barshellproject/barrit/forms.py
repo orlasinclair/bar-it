@@ -5,8 +5,8 @@ from .models import A_User
 
 class UserSignupForm(UserCreationForm):
     email = forms.EmailField()
-    name = forms.CharField(max_length=50)
-    password = forms.CharField(max_length=50)
+    name = forms.CharField(max_length=100)
+    password = forms.CharField(max_length=100)
 
     class Meta:
         model = A_User
