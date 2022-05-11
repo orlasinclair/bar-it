@@ -30,7 +30,7 @@ function NavBar() {
                 <NavLink role="previoussearch-button" to="previous"  className='link' ><h1>previous</h1></NavLink>
                 <button role="back-button" className='BackBtn' onClick={goBack}>Back</button>
                 <NavLink role="about-button" to="about"  className='link' ><h1>about</h1></NavLink>
-                <NavLink role="home-button" to="" className='link' activeClassName="active"><h1>Home</h1></NavLink>
+                <NavLink role="home-button" to="" className='link' activeclassname="active"><h1>Home</h1></NavLink>
 
             </Fragment>
             ): (
