@@ -1,6 +1,7 @@
 import React, {useState, useEffect }from 'react'
 import LoginForm from './LoginForm';
-import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
+import './styles.css'
 
 
 export default function Login() {

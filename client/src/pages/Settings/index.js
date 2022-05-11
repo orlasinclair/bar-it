@@ -8,6 +8,7 @@ import { ThemeContext, themes } from '../../components/Darkmode/themeContext';
 
 
 
+
 function Settings (){
     Quagga.stop()
     const [audiodescription, setAudiodescription] = useState(true)

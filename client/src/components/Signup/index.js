@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
+import './styles.css'
 
 export default function Signup() {
   const [email, setEmail] = useState('');
@@ -53,46 +55,54 @@ export default function Signup() {
   return (
     <div>
       {loading === false && <h1>Signup</h1>}
+      <Segment placeholder>
+
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
-      <form onSubmit={onSubmit}>
-        <label htmlFor='username'>Username:</label> <br />
-        <input
+      <Form onSubmit={onSubmit}>
+        <Form.Input
+          icon='user'
+          iconPosition='left'
+          label='Username'
           name='username'
           type='username'
           value={username}
           onChange={e => setUsername(e.target.value)}
           required
-        />{' '}
+          />{' '}
         <br />
-        <label htmlFor='email'>Email:</label> <br />
-        <input
+        <Form.Input
+          icon='envelope'
+          iconPosition='left'
+          label='Email'
           name='email'
           type='email'
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
         />{' '}
-        <br />
-        <label htmlFor='password1'>Password:</label> <br />
-        <input
+        <Form.Input
+          icon='lock'
+          iconPosition='left'
+          label='Password'
           name='password1'
           type='password'
           value={password1}
           onChange={e => setPassword1(e.target.value)}
           required
-        />{' '}
-        <br />
-        <label htmlFor='password2'>Confirm password:</label> <br />
-        <input
+          />{' '}
+        <Form.Input
+          icon='lock'
+          iconPosition='left'
+          label='Confirm password'
           name='password2'
           type='password'
           value={password2}
           onChange={e => setPassword2(e.target.value)}
           required
-        />{' '}
-        <br />
-        <input type='submit' value='Signup' />
-      </form>
+          />{' '}
+        <Button type='submit'content='Signup' primary />
+      </Form>
+          </Segment>
     </div>
   );
 };
