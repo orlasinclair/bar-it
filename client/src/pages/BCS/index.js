@@ -38,6 +38,7 @@ function NEWSCANNER() {
 
             setTitle(response.data.products[0].title)
             setBrand(response.data.products[0].brand)
+            return response
 
         }
             
@@ -52,7 +53,7 @@ function NEWSCANNER() {
             //setDescription(response.data.products[0].brand)
             // setDescription(response.data.products[0].category)
             // setDescription(response.data.products[0].stores)
-            return response
+        
 
         }
         catch (err) {
@@ -96,7 +97,7 @@ function NEWSCANNER() {
 
 
 
-    function startScanner() {
+   function startScanner() {
         let counter = 0
         Quagga.init({
             inputStream: {
@@ -104,15 +105,24 @@ function NEWSCANNER() {
                 type: "LiveStream",
                 target: document.querySelector('#scanner-container'),
                 constraints: {
-                    width: 480,
-                    height: 320,
-                    facingMode: "environment"
+                    // width: window.innerWidth,
+                    // height: window.innerHeight,
+                    width: 680,
+                    height: 420,
+                    //facingMode: "user",
+                    //cameraId : cameraTypes[1],
+                    //sourceId : cameraTypes[1]
+                    deviceId: "" + cameraTypes[cameraTypes.length-2]
+
+
                 },
             },
             decoder: {
                 readers: [
                     "ean_reader"
                 ],
+                halfSample: true,
+                patchSize: "small",
                 debug: {
                     showCanvas: true,
                     showPatches: true,
@@ -149,7 +159,6 @@ function NEWSCANNER() {
                     setDescription("barcode detected");
                 }
                 else{setDescription('')}
-                // setDescription("barcode detected")
                 if (result.boxes) {
                     drawingCtx.clearRect(0, 0,
                         parseInt(drawingCanvas.getAttribute("width")), 
@@ -181,24 +190,18 @@ function NEWSCANNER() {
             else{
                 counter++
                 if(counter % 500 === 0){
-                        if (localStorage.getItem('audiodescription') === 'true') {
-                            setDescription("no barcode has been detected");
-                        }
-                        else{setDescription('')}
-                      }
-                    // setDescription("no barcode has been detected")
+                    if (localStorage.getItem('audiodescription') === 'true') {
+                        setDescription("no barcode has been detected");
+                    }
+                    else{setDescription('')}
                 }
-            
+                // setDescription("no barcode has been detected")
+            }
 
         });
         Quagga.onDetected(function (result) {
             setBarCode(result.codeResult.code)
-            if (localStorage.getItem('audiodescription') === 'true') {
-                setDescription("barcode scanned");
-            }
-            else{setDescription('')}
-            // setDescription("barcode scanned")
-            document.querySelector('#scanner-container').style.display = "none";
+            setDescription("barcode scanned")
             document.querySelector('canvas').style.display = "none";
             setScannerRunning(false)
 
@@ -207,13 +210,14 @@ function NEWSCANNER() {
         });
     }
 
-    function onClick(){
-        if(scannerRunning){
-            document.querySelector('#scanner-container').style.display = "none";
-            setScannerRunning(false)
+
+    function onClick() {
+        if (scannerRunning) {
+            //document.querySelector('#scanner-container').style.display = "none";
             Quagga.stop();
+            setScannerRunning(false)
         }
-        else{
+        else {
             document.querySelector('#scanner-container').style.display = "block";
             startScanner()
         }
@@ -222,15 +226,26 @@ function NEWSCANNER() {
 
 
 
-    return(<>
+    return (<>
+    <section id="includeinfocontainer">
+    <section id="total-container">
+        <section id="scanner-container">
+        </section>
+        <input type="text" id="googleSearch"/>
+        <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
+        </section>
+        <section id="actualinfo">
+        <h1>barcode: {barCode}</h1>
+        <h1>Description: {description}</h1>
+        <h1>Title: {title}</h1>
+        <h1>Brand: {brand}</h1>
+        </section>
+        </section>
 
-    <section id="scanner-container"></section>
-    <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
-    <h1>barcode: {barCode}</h1>
-    
-    
-    
-    
+
+
+
+
     </>)
 
 
