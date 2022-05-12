@@ -1,6 +1,7 @@
 import React, {Fragment, useState, useEffect} from 'react';
 import { useNavigate as Navigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import { Input, Menu } from 'semantic-ui-react'
 import './styles.css'
 
 
@@ -20,13 +21,13 @@ function NavBar() {
         goTo(-1);
     }
 
-    return (<>
+    return (<Menu secondary>
         { isAuth === true ? ( 
             <Fragment>
 
                 <NavLink role="dashboard" to='/dashboard'>Dashboard</NavLink>
                 <NavLink to='/logout'>Logout</NavLink>
-                <NavLink role="settings-button" to="settings"  className='link' ><h1>settings</h1></NavLink>
+                <NavLink role="settings-button" to="settings" icon="user"  className='link' ><h1>settings</h1></NavLink>
                 <NavLink role="previoussearch-button" to="previous"  className='link' ><h1>previous</h1></NavLink>
                 <button role="back-button" className='BackBtn' onClick={goBack}>Back</button>
                 <NavLink role="about-button" to="about"  className='link' ><h1>about</h1></NavLink>
@@ -40,9 +41,8 @@ function NavBar() {
                     <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink>
                 </Fragment>
             )}
-        {/* <NavLink role="login-button" to="login"  className='link' ><h1>login</h1></NavLink>
-        <NavLink role="signup-button" to="signup"  className='link' ><h1>signup</h1></NavLink> */}
-    </>)
+        
+    </Menu>)
 
 }
 
