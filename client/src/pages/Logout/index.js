@@ -25,7 +25,7 @@ export default function Logout() {
         .then(res => res.json())
         .then(data => {
           localStorage.clear();
-          window.location.replace('http://localhost:8081/');
+          window.location.replace('https://barr-it.netlify.app/');
         });
     };
   
