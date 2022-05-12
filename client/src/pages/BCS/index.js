@@ -3,67 +3,97 @@ import React, { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
+import './styles.css'
+import { useHref } from 'react-router-dom';
 
 
 
-function BCS() {
+function NEWSCANNER() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
+    const [title, setTitle] = useState("");
+    const [brand, setBrand] = useState("");
     const { speak } = useSpeechSynthesis();
+    const [cameraTypes, setCameraTypes] = useState([]);
     const msg = new SpeechSynthesisUtterance()
+    let array = []
     msg.text = description
 
     useEffect(() => {
         window.speechSynthesis.speak(msg)
     }, [description])
 
-    async function getInfo(){
+    async function getInfo() {
 
-        try{
+        try {
             const proxyurl = "https://cors-anywhere.herokuapp.com/"
-            const response    = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=n5ztt93jii7dem2cwhbupg9mpi8xen`)
+            const response = await axios.get(`${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=cridshb84a0w9xtez2xcnptmryx8xb`)
             if (localStorage.getItem('audiodescription') === 'true') {
-                setDescription(response.data.products[0].description);
+                setDescription(response.data.products[0].description)
             }
             else{setDescription('')}
-            console.log("response.data in getInfo", response.data.products[0].title)
-            console.log("response.data in getInfo", response.data.products[0].brand)
+            // setDescription(response.data.products[0].category)
+            // setDescription(response.data.products[0].stores)
+
+            setTitle(response.data.products[0].title)
+            setBrand(response.data.products[0].brand)
+
+        }
+            
+            //setDescription(response.data.products[0].description)
+            //console.log("response.data in getInfo", response.data.products[0].title)
+            //console.log("response.data in getInfo", response.data.products[0].brand)
+
             // console.log("response.data in getInfo", response.data.products[0].category)
             // console.log("response.data in getInfo", response.data.products[0].stores)
-            const productinfo = await response.data.products
-            if (localStorage.getItem('audiodescription') === 'true') {
-                setDescription(response.data.products[0].title)
-                setDescription(response.data.products[0].brand)
-            }
-            else{setDescription('')}
+            //const productinfo = await response.data.products
+            //setDescription(response.data.products[0].title)
+            //setDescription(response.data.products[0].brand)
             // setDescription(response.data.products[0].category)
             // setDescription(response.data.products[0].stores)
             return response
 
         }
-        catch (err){
+        catch (err) {
             setDescription("Sorry, i dont have that in my database, please try again")
             setBarCode("")
             setDescription("")
             startScanner()
-            document.querySelector('#scanner-container').style.display = "block";
+            //document.querySelector('#scanner-container').style.display = "block";
             return err
         }
 
     }
 
     useEffect(() => {
-        startScanner()
+        //startScanner()
+        console.log("if you dont see this something is odd with netlify")
+        navigator.mediaDevices.enumerateDevices()
+            .then(function (devices) {
+                devices.forEach(function (device) {
+                    console.log(device.kind + ": " + device.label +
+                        " id = " + device.deviceId);
+                        array.push(device.deviceId)
+                        console.log(array)
+                        setCameraTypes(array)
+                }
+
+                
+                );
+            })
+            .catch(function (err) {
+                console.log(err.name + ": " + err.message);
+            });
     }, [])
 
 
     useEffect(() => {
-        if(barCode){
+        if (barCode) {
             getInfo()
-            setBarCode("")
         }
     }, [scannerRunning])
+
 
 
     function startScanner() {
