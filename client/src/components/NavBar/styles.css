@@ -13,3 +13,14 @@
     display: flex;
     justify-content: center;
 }
+
+button.ui.icon.button.BackBtn {
+    background-color: black;
+}
+
+i.backward.icon {
+    color: yellow;
+}
+
+
+
