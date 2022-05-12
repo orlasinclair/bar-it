@@ -36,7 +36,7 @@ function Home (){
             </Fragment>
             )}
         </div>
->>>>>>> e68191b5567bd5c714affbf16560966958c278ba
+
     <BCS />
     </>)
 
