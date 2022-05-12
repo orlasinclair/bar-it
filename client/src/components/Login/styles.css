@@ -1,7 +1,13 @@
 .ui.placeholder.segment {
-    background-color: red;
+    background-color: #C9E3AC;
+    border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
+}
+
+button.ui.button {
+    background-color: #90BE6D;
+    color: black;
 }
 
 

@@ -54,9 +54,7 @@ export default function Signup() {
 
   return (
     <div>
-      {loading === false && <h1>Signup</h1>}
       <Segment placeholder>
-
       {errors === true && <h2>Cannot signup with provided credentials</h2>}
       <Form onSubmit={onSubmit}>
         <Form.Input
@@ -69,7 +67,6 @@ export default function Signup() {
           onChange={e => setUsername(e.target.value)}
           required
           />{' '}
-        <br />
         <Form.Input
           icon='envelope'
           iconPosition='left'
@@ -100,7 +97,7 @@ export default function Signup() {
           onChange={e => setPassword2(e.target.value)}
           required
           />{' '}
-        <Button type='submit'content='Signup' primary />
+        <Button type='submit'content='Signup' />
       </Form>
           </Segment>
     </div>

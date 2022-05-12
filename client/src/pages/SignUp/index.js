@@ -15,7 +15,6 @@ function SignUp (){
     }
     return(
     <>
-    <h1 role="heading">Sign up page</h1>
     { !formIsSubmitted ? <Signup submitForm={submitForm} /> : <SignupSuccess/>}
     </>)
 

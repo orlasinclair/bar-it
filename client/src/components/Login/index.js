@@ -50,7 +50,6 @@ export default function Login() {
 
   return (
     <>
-      {loading === false && <h1>Login</h1>}
     <Segment placeholder>
       {error === true && <h2>Cannot log in with provided credentials</h2>}
       {loading === false && (
@@ -75,7 +74,7 @@ export default function Login() {
             required
             onChange={e => setPassword(e.target.value)}
             />{' '}
-            <Button type='submit'content='Login' primary />
+            <Button type='submit'content='Login'  />
         </Form>
       )}
     </Segment>
