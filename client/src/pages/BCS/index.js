@@ -8,7 +8,7 @@ import { useHref } from 'react-router-dom';
 
 
 
-function NEWSCANNER() {
+function BCS() {
     const [scannerRunning, setScannerRunning] = useState(false);
     const [barCode, setBarCode] = useState("");
     const [description, setDescription] = useState("");
