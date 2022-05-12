@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
 
+
 export default function Logout() {
     const [loading, setLoading] = useState(true);
 
@@ -33,7 +34,7 @@ export default function Logout() {
         {loading === false && (
           <Fragment>
             <h1>Are you sure you want to logout?</h1>
-            <input type='button' value='Logout' onClick={handleLogout} />
+            <input type='button' value='Logout' className="logoutBtn" onClick={handleLogout} />
           </Fragment>
         )}
       </div>

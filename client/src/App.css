@@ -1,3 +1,19 @@
 .white-content {
-    background: #e4e4e4;
+    background: #EAEFBD;
   }
+
+  * {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #EBEB10;
+    color: #37371F;
+    font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    height: 100vh; 
+    margin: 0; 
+}

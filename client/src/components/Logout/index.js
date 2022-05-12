@@ -1,4 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import "./styles.css"
+import "../../App.css"
 
 export default function Logout() {
     const [loading, setLoading] = useState(true);

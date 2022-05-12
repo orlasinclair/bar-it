@@ -4,6 +4,8 @@ import { useSpeechSynthesis } from "react-speech-kit";
 import { useEffect } from "react"
 import axios from 'axios';
 
+import "./styles.css"
+
 
 
 function BCS() {
@@ -176,6 +178,7 @@ function BCS() {
     return(<>
 
     <section id="scanner-container"></section>
+    
     <input type="button" id="btn" value="Start/Stop the scanner" onClick={onClick}/>
     <h1>barcode: {barCode}</h1>
     

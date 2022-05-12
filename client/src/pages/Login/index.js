@@ -7,7 +7,6 @@ import {Login} from '../../components'
 function LoginPage (){
     Quagga.stop()
     return(<>
-    <h1 role="heading">Log-in page</h1>
     <Login />
     </>)
 

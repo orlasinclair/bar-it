@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import Signup from '../../components/Signup'
 import SignupSuccess from '../../components/Signup/SignupSuccess'
 import Quagga from 'quagga';
-//import './styles.css'
+import './style.css'
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
 //import {BackButton} from '../../components'
 
 
@@ -12,8 +13,8 @@ function SignUp (){
     const submitForm = () => {
         setFormIsSubmitted(true)
     }
-    return(<>
-    <h1 role="heading">Sign up page</h1>
+    return(
+    <>
     { !formIsSubmitted ? <Signup submitForm={submitForm} /> : <SignupSuccess/>}
     </>)
 

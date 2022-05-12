@@ -1,0 +1,16 @@
+#aboutBtn{
+    margin: 0 auto;
+    display: block;
+    height: 50px;
+    width: 400px;
+    cursor: pointer;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 5px;
+    font-size: 1.71428571rem;
+    font-weight: bold;
+    font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+    letter-spacing: 1.5px;
+    background-color: white;
+
+}
