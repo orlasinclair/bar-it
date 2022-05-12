@@ -52,7 +52,6 @@ function Settings (){
     
     return(
         <section>
-            <h1 role="heading">Settings page</h1>
             <section className="toggle">
                 <span className='label'>Audio Description:</span>
                 <label className="toggle-switch">
@@ -74,8 +73,6 @@ function Settings (){
                       }}
                     id='modeToggle' type="checkbox" checked={modeSettings} onChange={() => toggleMode()} />
                     <span className="switch" />
-                    <i className={darkmode ? 'fas fa-sun' : 'fas fa-moon'}></i>
-                    <span className="d-lg-none d-md-block">Switch mode</span>
                 </label>
                 )}
                 </ThemeContext.Consumer>

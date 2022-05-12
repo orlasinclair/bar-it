@@ -1,6 +1,7 @@
 
 
 .link{
+    font-size: 18px;
     color: #37371F;
     margin: 0px 20px;
 }
@@ -16,6 +17,7 @@
 
 button.ui.icon.button.BackBtn {
     background-color: black;
+    height: 100%;
 }
 
 i.backward.icon {

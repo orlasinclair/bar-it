@@ -34,14 +34,14 @@
   }
   .toggle-switch input[type="checkbox"]:checked + .switch::before {
     transform: translateX(45px);
-    background-color: #6699cc;
+    background-color: #C9E3AC;
   }
   .toggle-switch input[type="checkbox"]:checked + .switch {
     content: "ON";
     padding-left: 10px;
     text-align: left;
-    color: aliceblue;
-    background-color: #336699;
+    color: #C9E3AC;
+    background-color: #90BE6D;
   }
 
   .toggle{
