@@ -7,7 +7,7 @@ export default function Logout() {
 
     useEffect(() => {
       if (localStorage.getItem('token') == null) {
-        window.location.replace('http://localhost:8081/');
+        window.location.replace('https://barr-it.netlify.app/');
       } else {
         setLoading(false);
       }
@@ -26,7 +26,7 @@ export default function Logout() {
         .then(res => res.json())
         .then(data => {
           localStorage.clear();
-          window.location.replace('http://localhost:8081/');
+          window.location.replace('https://barr-it.netlify.app/');
         });
     };
   

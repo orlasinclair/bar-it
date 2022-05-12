@@ -12,7 +12,7 @@ export default function Login() {
 
    useEffect(() => {
     if (localStorage.getItem('token') !== null) {
-      window.location.replace('http://localhost:8081/');
+      window.location.replace('https://barr-it.netlify.app/');
     } else {
       setLoading(false);
     }
@@ -38,7 +38,7 @@ export default function Login() {
         if (data.key) {
           localStorage.clear();
           localStorage.setItem('token', data.key);
-          window.location.replace('http://localhost:8081/');
+          window.location.replace('https://barr-it.netlify.app/');
         } else {
           setEmail('');
           setPassword('');
