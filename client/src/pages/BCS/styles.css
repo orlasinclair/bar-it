@@ -4,8 +4,6 @@ canvas.drawing, canvas.drawingBuffer {
     left:0;
     display: none !important;
     
-
-
 }
 
 #scanner-container{
@@ -15,10 +13,21 @@ canvas.drawing, canvas.drawingBuffer {
 }
 
 
-
 #btn{
-    margin-top: 30px;
-    height: 38%;
+
+        background-color: #C9E3AC;
+        margin: 0 auto;
+        display: block;
+        cursor: pointer;
+        border-width: 7px;
+        border-color: black;
+        border-radius: 5px;
+        font-size: 1.71428571rem;
+        font-weight: bold;
+        font-family: 'Lato','Helvetica Neue',Arial,Helvetica,sans-serif;
+        letter-spacing: 1.5px;
+        padding-bottom: 33px;
+    
 
 }
 

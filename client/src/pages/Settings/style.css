@@ -54,3 +54,13 @@
       position: relative;
       display: block;
   }
+
+  .settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 52vh;
+    margin: 0;
+    font-size: 30px;
+  }

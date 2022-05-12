@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import "./styles.css"
 
 
 export default function Logout() {
@@ -30,7 +31,7 @@ export default function Logout() {
     };
   
     return (
-      <div>
+      <div className='logout'>
         {loading === false && (
           <Fragment>
             <h1>Are you sure you want to logout?</h1>

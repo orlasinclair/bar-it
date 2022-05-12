@@ -7,11 +7,10 @@ import "./App.css"
 
 function App() {
 
-    return (<>
-
-        
-        <NavBar/>
-
+    return (
+        <div className='App' id="outer-container">
+            <NavBar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} />
+        <div id="page-wrap">
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="about" element={<About />} />
@@ -23,7 +22,8 @@ function App() {
             <Route path="Dashboard" element={<Dashboard />} />
             <Route path="*" element = {<NotFound />} />
         </Routes>
-    </>)
+        </div>
+    </div>)
 
 
 
