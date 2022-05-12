@@ -1,6 +1,10 @@
 # bar-it
+   We decided to create an app with the aim of giving more independence to those who are visually impaired.
 
-An App....
+   Barr-it provides a way to scan any barcode with your phone, tablet or computer and returns an audio-description of that product to the user. 
+
+   Of course this we have aimed to make this app inclusive and so have included features so it is also accessible for those with hearing loss. 
+
 ## Installation & Usage
 # Installation
 
