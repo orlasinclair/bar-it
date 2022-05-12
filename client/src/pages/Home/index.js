@@ -27,6 +27,7 @@ function Home (){
     
 
     return(<>
+
     <div>
         {loading === false && (
             <Fragment>
@@ -35,6 +36,7 @@ function Home (){
             </Fragment>
             )}
         </div>
+
     <BCS />
     </>)
 
