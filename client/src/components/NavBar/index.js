@@ -72,7 +72,14 @@ function NavBar() {
                 onClick={handleItemClick}
                  />
                 
-                <Button icon role="back-button" className='BackBtn' onClick={goBack}><Icon name= 'backward'></Icon></Button>
+                <Menu.Item
+                
+                as={Button} 
+                role="back-button" 
+                icon='backward'
+                className='BackBtn'
+                onClick={goBack}
+                />
 
             </Fragment>
             ): (
