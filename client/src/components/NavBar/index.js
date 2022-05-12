@@ -3,6 +3,7 @@ import { useNavigate as Navigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Input, Menu, Button, Icon } from 'semantic-ui-react'
 import './styles.css'
+import barcode from '../../images/barcode.png'
 
 
 
@@ -30,6 +31,7 @@ function NavBar() {
         <Menu secondary>
         { isAuth === true ? ( 
             <Fragment >
+                <img class="ui small image" src={barcode}></img>
                 <Menu.Item
                 as={NavLink} 
                 role="home-button" 
@@ -75,6 +77,7 @@ function NavBar() {
             </Fragment>
             ): (
                 <Fragment>
+                  <img class="ui small image" src={barcode}></img>
                     <Menu.Item
                 as={NavLink} 
                 role="login-button" 

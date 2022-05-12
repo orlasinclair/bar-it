@@ -18,10 +18,15 @@
 button.ui.icon.button.BackBtn {
     background-color: black;
     height: 100%;
+    margin-top: 26px;
 }
 
 i.backward.icon {
     color: yellow;
+}
+
+img.ui.small.image {
+    margin-top: 10px;
 }
 
 
