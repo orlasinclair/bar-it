@@ -43,7 +43,7 @@ section#actualinfo {
 
 
 #total-container{
-    width: 95vw;
+/*     width: 95vw; */
     height: 45vh;
     display: flex !important;
     align-items: center;
