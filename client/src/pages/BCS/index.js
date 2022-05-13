@@ -198,14 +198,14 @@ function BCS() {
           );
         }
       } else {
-        counter++;
-        if (counter % 500 === 0) {
-          if (localStorage.getItem("audiodescription") === "true") {
-            setDescription("no barcode has been detected");
-          } else {
-            setDescription("");
-          }
-        }
+//         counter++;
+//         if (counter % 500 === 0) {
+//           if (localStorage.getItem("audiodescription") === "true") {
+//             setDescription("no barcode has been detected");
+//           } else {
+//             setDescription("");
+//           }
+//         }
         // setDescription("no barcode has been detected")
       }
     });
