@@ -39,6 +39,8 @@ function BCS() {
 
       setTitle(response.data.products[0].title);
       setBrand(response.data.products[0].brand);
+      setBarCode("");
+      setDescription("");
       return response;
     } catch (err) {
       //setDescription(response.data.products[0].description)
