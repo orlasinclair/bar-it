@@ -31,7 +31,6 @@ function BCS() {
       );
       if (localStorage.getItem("audiodescription") === "true") {
         setDescription(response.data.products[0].description);
-        setDescription("");
       } else {
         setDescription("");
       }
@@ -104,6 +103,7 @@ function BCS() {
   // console.log("cameratypes = ", cameraTypes)
 
   function startScanner() {
+    setDescription("");
     let counter = 0;
     Quagga.init(
       {
