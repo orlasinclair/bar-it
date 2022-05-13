@@ -21,7 +21,6 @@ function BCS() {
 
   useEffect(() => {
     window.speechSynthesis.speak(msg);
-    setDescription("");
   }, [description]);
 
   async function getInfo() {
@@ -40,6 +39,9 @@ function BCS() {
 
       setTitle(response.data.products[0].title);
       setBrand(response.data.products[0].brand);
+      setBarCode("");
+      setDescription("");
+      startScanner();
       return response;
     } catch (err) {
       //setDescription(response.data.products[0].description)
@@ -57,9 +59,7 @@ function BCS() {
       setDescription(
         "Sorry, i dont have that in my database, please try again"
       );
-      setBarCode("");
-      setDescription("");
-      startScanner();
+
       //document.querySelector('#scanner-container').style.display = "block";
       return err;
     }
@@ -104,7 +104,6 @@ function BCS() {
   // console.log("cameratypes = ", cameraTypes)
 
   function startScanner() {
-    setDescription("");
     let counter = 0;
     Quagga.init(
       {
