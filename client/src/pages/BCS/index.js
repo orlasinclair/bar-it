@@ -337,14 +337,7 @@ function BCS() {
           <section id="scanner-container">
           </section>
           <input type="text" id="googleSearch" />
-          <Button
-            type="button"
-            id="btn"
-            value="Start/Stop the scanner"
-            onClick={onClick}
-          >
-            Start/Stop Scanner
-          </Button>
+          <Button id="btn" value={scannerRunning ? "Stop" : "Start"} onClick={onClick}/>
           
         </section>
         <section id="actualinfo">

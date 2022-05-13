@@ -51,7 +51,7 @@ function Settings (){
 
     
     return(
-        <section>
+        <section className='settings'>
             <section className="toggle">
                 <span className='label'>Audio Description:</span>
                 <label className="toggle-switch">
@@ -59,6 +59,8 @@ function Settings (){
                     <span className="switch" />
                 </label>
             </section>
+            <br />
+            <br />
             <section className="toggle">
                 <span className='label text-warning'>Darkmode:</span>
                 <InputGroup>

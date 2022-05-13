@@ -2,6 +2,7 @@ import React, {Fragment, useState, useEffect} from 'react';
 import { useNavigate as Navigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import { Input, Menu, Button, Icon } from 'semantic-ui-react'
+import { slide as Nav } from 'react-burger-menu';
 import './styles.css'
 import barcode from '../../images/barcode.png'
 
@@ -27,11 +28,18 @@ function NavBar() {
     setActiveItem(name)
   }
 
-    return (
-        <Menu secondary>
+    return (<>
+          <img class="ui small image" src={barcode}></img>
+          <Menu.Item
+                as={Button} 
+                role="back-button" 
+                icon='backward'
+                className='BackBtn'
+                onClick={goBack}
+                />
+        <Nav secondary>
         { isAuth === true ? ( 
             <Fragment >
-                <img class="ui small image" src={barcode}></img>
                 <Menu.Item
                 as={NavLink} 
                 role="home-button" 
@@ -41,7 +49,7 @@ function NavBar() {
                 active={activeItem === 'home'}
                 onClick={handleItemClick}
                  />
-
+                <br />
                 <Menu.Item
                 as={NavLink} 
                 role="about-button" 
@@ -51,7 +59,7 @@ function NavBar() {
                 active={activeItem === 'about'}
                 onClick={handleItemClick}
                  />
-
+                <br />
                 <Menu.Item
                 as={NavLink} 
                 role="settings-button" 
@@ -61,7 +69,7 @@ function NavBar() {
                 active={activeItem === 'settings'}
                 onClick={handleItemClick}
                  />
-
+                <br />
                  <Menu.Item
                 as={NavLink} 
                 role="logout-button" 
@@ -71,20 +79,9 @@ function NavBar() {
                 active={activeItem === 'logout'}
                 onClick={handleItemClick}
                  />
-                
-                <Menu.Item
-                
-                as={Button} 
-                role="back-button" 
-                icon='backward'
-                className='BackBtn'
-                onClick={goBack}
-                />
-
             </Fragment>
             ): (
                 <Fragment>
-                  <img class="ui small image" src={barcode}></img>
                     <Menu.Item
                 as={NavLink} 
                 role="login-button" 
@@ -94,7 +91,7 @@ function NavBar() {
                 active={activeItem === 'login'}
                 onClick={handleItemClick}
                  />
-
+                  <br />
                 <Menu.Item
                 as={NavLink} 
                 role="signup-button" 
@@ -108,7 +105,8 @@ function NavBar() {
             )}
         
         
-    </Menu>)
+    </Nav>
+    </>)
 
 }
 
