@@ -27,7 +27,7 @@ function BCS() {
     try {
       const proxyurl = "https://cors-anywhere.herokuapp.com/";
       const response = await axios.get(
-        `${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=cridshb84a0w9xtez2xcnptmryx8xb`
+        `${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=qcueyxuf3oqs0j0497zhwd7fp7ds94`
       );
       if (localStorage.getItem("audiodescription") === "true") {
         setDescription(response.data.products[0].description);
