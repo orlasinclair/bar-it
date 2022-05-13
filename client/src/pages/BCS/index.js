@@ -31,11 +31,11 @@ function BCS() {
         `${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=qcueyxuf3oqs0j0497zhwd7fp7ds94`
       );
       setDescription(response.data.products[0].description);
-      if (localStorage.getItem("audiodescription") === "true") {
+      //if (localStorage.getItem("audiodescription") === "true") {
         //setDescription(response.data.products[0].description);
-      } else {
-        setDescription("");
-      }
+      //} else {
+       // setDescription("");
+      //}
       // setDescription(response.data.products[0].category)
       // setDescription(response.data.products[0].stores)
 
