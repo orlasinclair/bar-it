@@ -31,6 +31,7 @@ function BCS() {
       );
       if (localStorage.getItem("audiodescription") === "true") {
         setDescription(response.data.products[0].description);
+        setDescription("");
       } else {
         setDescription("");
       }
