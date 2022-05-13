@@ -21,6 +21,7 @@ function BCS() {
 
   useEffect(() => {
     window.speechSynthesis.speak(msg);
+    setDescription("");
   }, [description]);
 
   async function getInfo() {
@@ -31,7 +32,6 @@ function BCS() {
       );
       if (localStorage.getItem("audiodescription") === "true") {
         setDescription(response.data.products[0].description);
-        setBarCode("");
       } else {
         setDescription("");
       }
