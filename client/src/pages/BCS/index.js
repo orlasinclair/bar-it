@@ -40,7 +40,6 @@ function BCS() {
       setTitle(response.data.products[0].title);
       setBrand(response.data.products[0].brand);
       setBarCode("");
-      setDescription("");
       startScanner();
       return response;
     } catch (err) {
