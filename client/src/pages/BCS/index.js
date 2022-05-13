@@ -21,6 +21,7 @@ function BCS() {
 
   useEffect(() => {
     window.speechSynthesis.speak(msg);
+    setDescription("");
   }, [description]);
 
   async function getInfo() {
