@@ -20,6 +20,7 @@ function BCS() {
   msg.text = description;
 
   useEffect(() => {
+    msg.text = description;
     window.speechSynthesis.speak(msg);
   }, [description]);
 
@@ -29,8 +30,9 @@ function BCS() {
       const response = await axios.get(
         `${proxyurl}https://api.barcodelookup.com/v3/products?barcode=${barCode}&formatted=y&key=qcueyxuf3oqs0j0497zhwd7fp7ds94`
       );
+      setDescription(response.data.products[0].description);
       if (localStorage.getItem("audiodescription") === "true") {
-        setDescription(response.data.products[0].description);
+        //setDescription(response.data.products[0].description);
       } else {
         setDescription("");
       }
@@ -40,7 +42,6 @@ function BCS() {
       setTitle(response.data.products[0].title);
       setBrand(response.data.products[0].brand);
       setBarCode("");
-      startScanner();
       return response;
     } catch (err) {
       //setDescription(response.data.products[0].description)
